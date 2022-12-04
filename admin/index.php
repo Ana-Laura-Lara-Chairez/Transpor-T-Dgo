@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="assets/img/favicon.png" rel="icon">
 
 </head>
 
@@ -83,7 +84,27 @@
                         $_SESSION['mensaje'] = 0;
 
 
-                        echo '"<script> window.location.href = "./dashboard.php"; </script>"';
+                        echo "
+                        <script type='text/javascript'>
+                        
+                        Swal.fire(
+                            'Datos correctos',
+                            'Sesion iniciada correctamente',
+                            'success'
+                        ),
+                        setInterval(codingCourse, 2000);
+                        function codingCourse() {
+                            window.location.assign('dashboard.php')
+                          }
+
+                        
+                       
+                        </script>
+                        
+                        ";
+                        
+                        
+                        
                     } else {
                         echo "
                         <script type='text/javascript'>

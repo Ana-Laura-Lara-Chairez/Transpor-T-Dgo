@@ -1,0 +1,13 @@
+.contenedor-saldo{
+    width: 50%;
+}
+
+.saldo{
+    margin-top:20px; 
+    color:#004E8B;
+    font-size: 1.3em;
+}
+
+.dinero{
+    font-size: 2.5em;
+}

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="assets/img/favicon.png" rel="icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -28,27 +31,90 @@
                                 <center> <img src="assets/img/favicon.png" alt="logo" class="logo"></center>
                             </div>
                             <p class="login-card-description">Crea una cuenta</p>
-                            <form method="POST" action="">
+                            <form method="POST" action="registro.php">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Correo electrónico</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electrónico">
+                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Correo Electrónico">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="sr-only">Nombre</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre Completo">
+                                    <input type="text" name="name" id="name" class="form-control" required placeholder="Nombre Completo">
                                 </div>
                                 <div class="form-group">
                                     <label for="user" class="sr-only">Usuario</label>
-                                    <input type="text" name="user" id="user" class="form-control" placeholder="Usuario">
+                                    <input type="text" name="user" id="user" class="form-control" required placeholder="Usuario">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Contraseña</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
+                                    <input type="password" name="password" id="password" class="form-control" required placeholder="Contraseña">
                                 </div>
                                 <center>
                                     <button name="registrar" id="registrar" class="boton" type="submit">Registrarse</button>
                                 </center>
                             </form>
+
+                            <div id="todo">
+                            <?php
+                           
+                            
+           $servername = "localhost";
+           $database = "transpor-t";
+           $username = "root";
+           $password = "";
+           // Create connection
+           $conn = mysqli_connect($servername, $username, $password, $database);
+           // Check connection
+           if (!$conn) {
+               die("Connection failed: " . mysqli_connect_error());
+           }
+           
+
+            
+
+            if(isset($_POST['name'])){
+                $email = $_POST['email'];
+                $name = $_POST['name'];
+                $nick = $_POST['user'];
+
+                $password = $_POST['password'];
+                
+                $sql = "INSERT INTO usuarios(email,nombre,usuario,password,puesto) VALUES ('$email','$name','$nick','$password','usuario')";
+                                    
+                
+                if($conn->query($sql) === true){
+                    
+                    
+                    echo "
+                        <script type='text/javascript'>
+                        
+                        Swal.fire(
+                        'Usuario creado correctamente',
+                        'Inicia sesión para continuar',
+                        'success'
+                      ),
+                        setInterval(codingCourse, 2000);
+                        function codingCourse() {
+                            window.location.assign('index.php')
+                          }
+
+                        
+                       
+                        </script>
+                        
+                        ";
+                    
+                    
+                    
+                    
+
+                }else{
+                    die("Error al insertar datos: " . $conn->error);
+                }
+            }
+
+        ?>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,64 +122,9 @@
 
 
 
-            <?php
+         
 
-            require('./database.php');
-
-            if (isset($_POST['login'])) {
-
-                $email = $_POST['email'];
-                $contrasenia = $_POST['password'];
-
-
-
-                $consulta = ("SELECT id,password,nombre FROM usuarios WHERE email = '$email'");
-                $resultado =  mysqli_fetch_assoc(mysqli_query($conn, $consulta));
-
-
-                if ($resultado) {
-
-                    $cont = $resultado['password'];
-
-                    if ($contrasenia== $cont) {
-
-                        session_start();
-                        $_SESSION['sesid'] = $resultado['nombre'] . "cod" . 2040;
-                        $_SESSION['nombre'] = $resultado['nombre'];
-                        $_SESSION['usr_id'] = $resultado['id'];
-                        $_SESSION['mensaje'] = 0;
-
-
-                        echo '"<script> window.location.href = "./dashboard.php"; </script>"';
-                    } else {
-                        echo "
-                        <script type='text/javascript'>
-                        
-                        Swal.fire(
-                            'Error',
-                            'Las credenciales que se han introducido son erróneas, por favor verifique',
-                            'warning'
-                          )
-                        </script>
-                        ";
-                    }
-                } else {
-                    echo "
-                    <script type='text/javascript'>
-                    
-                    Swal.fire(
-                        'Error',
-                        'Las credenciales que se han introducido son erróneas, por favor verifique',
-                        'warning'
-                      )
-                    </script>
-                    ";
-                }
-            }
-
-
-            ?>
-
+         
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

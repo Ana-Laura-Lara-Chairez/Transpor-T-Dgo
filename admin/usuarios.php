@@ -46,7 +46,7 @@ if (isset($_SESSION['sesid'])) {
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-                <a href="index.html"><img src="assets/img/1.png" width="80px" alt="CODEDUR LOGO" class="img-responsive logo"></a>
+                <a href="index.html"><img src="assets/img/logo.png" width="80px" alt="CODEDUR LOGO" class="img-responsive logo"></a>
             </div>
             <div class="container-fluid">
                 <div class="navbar-btn">
@@ -61,9 +61,6 @@ if (isset($_SESSION['sesid'])) {
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span><?php echo $_SESSION['nombre']; ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="lnr lnr-user"></i> <span>My Perfil</span></a></li>
-
-                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Configuracion</span></a></li>
                                 <li><a href="./acciones/logout.php"><i class="lnr lnr-exit"></i> <span>Salir</span></a></li>
                             </ul>
                         </li>
@@ -80,15 +77,9 @@ if (isset($_SESSION['sesid'])) {
             <div class="sidebar-scroll" style="margin-top: 8%;">
                 <nav>
                     <ul class="nav">
-                        <li><a href="dashboard.php" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                        <li><a href="publicaciones.php" class=""><i class="lnr lnr-code"></i> <span>Publicaciones</span></a></li>
-                        <li><a href="documentos.php" class=""><i class="lnr lnr-file-empty"></i> <span>Documentos</span></a></li>
-                        <li><a href="#" class="active"><i class="lnr lnr-user"></i> <span>Usuarios</span></a></li>
-                        <li><a href="pleno.php" class=""><i class="lnr lnr-users"></i> <span>Pleno del CODEDUR</span></a></li>
-                        <li><a href="proyectos.php" class=""><i class="lnr lnr-construction"></i> <span>Proyectos</span></a></li>
-                        <li><a href="videos.php" class=""><i class="lnr lnr-film-play"></i> <span>Videos</span></a></li>
-                        <li><a href="contacto.php" class=""><i class="lnr lnr-phone-handset"></i> <span>Contacto</span></a></li>
-
+                    <li><a href="dashboard.php"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                        <li><a href="usuarios.php" class="active"><i class="lnr lnr-user"></i> <span>Usuarios</span></a></li>
+                        <li><a href="usuarios.php" class=""><i class="lnr lnr-bus"></i> <span>Rutas</span></a></li>
 
                     </ul>
                 </nav>
@@ -104,7 +95,6 @@ if (isset($_SESSION['sesid'])) {
                     <div class="panel panel-headline">
                         <div class="panel-heading">
                             <h3 class="panel-title">Administrar Usuarios</h3>
-                            <p class="panel-subtitle">Aquí podras administrar los usuarios que pueden tener acceso a el apartado de administración del sitio CODEDUR</p>
                         </div>
                         <div class="panel-body">
 

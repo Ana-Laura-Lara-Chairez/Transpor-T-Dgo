@@ -140,7 +140,7 @@ $respubli = mysqli_query($conn, $publicaciones);
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-                <a href="index.html"><img src="assets/img/1.png" width="80px" alt="CODEDUR LOGO" class="img-responsive logo"></a>
+                <a href="index.html"><img src="assets/img/logo.png" width="80px" alt="" class="img-responsive logo"></a>
             </div>
             <div class="container-fluid">
                 <div class="navbar-btn">
@@ -155,9 +155,6 @@ $respubli = mysqli_query($conn, $publicaciones);
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span><?php echo $_SESSION['nombre'] ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="lnr lnr-user"></i> <span>My Perfil</span></a></li>
-
-                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Configuración</span></a></li>
                                 <li><a href="./acciones/logout.php"><i class="lnr lnr-exit"></i> <span>Salir</span></a></li>
                             </ul>
                         </li>
@@ -173,17 +170,8 @@ $respubli = mysqli_query($conn, $publicaciones);
                 <nav>
                     <ul class="nav">
                         <li><a href="#" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                        <li><a href="publicaciones.php" class=""><i class="lnr lnr-code"></i> <span>Publicaciones</span></a></li>
-                        <li><a href="documentos.php" class=""><i class="lnr lnr-file-empty"></i> <span>Documentos</span></a></li>
                         <li><a href="usuarios.php" class=""><i class="lnr lnr-user"></i> <span>Usuarios</span></a></li>
-                        <li><a href="pleno.php" class=""><i class="lnr lnr-users"></i> <span>Pleno del CODEDUR</span></a></li>
-                        <li><a href="proyectos.php" class=""><i class="lnr lnr-construction"></i> <span>Proyectos</span></a></li>
-                        <li><a href="videos.php" class=""><i class="lnr lnr-film-play"></i> <span>Videos</span></a></li>
-                        <li><a href="contacto.php" class=""><i class="lnr lnr-phone-handset"></i> <span>Contacto</span></a></li>
-
-
-
-
+                        <li><a href="rutas.php" class=""><i class="lnr lnr-bus"></i> <span>Rutas</span></a></li>
 
                     </ul>
                 </nav>
@@ -198,67 +186,17 @@ $respubli = mysqli_query($conn, $publicaciones);
                     <!-- OVERVIEW -->
                     <div class="panel panel-headline">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Panel administrador - Inicio</h3>
-                            <p class="panel-subtitle">Revisa  y administra rápidamente lo que se visualiza en la página principal del CODEDUR </p>
+                            <h3 class="panel-title">Administración - Transpor-T</h3>
                         </div>
                         <div class="panel-body">
 
                             <div class="row">
-                                <div class="col-md-4 col-xl-3">
-                                    <div class="card bg-c-blue order-card">
-                                        <div class="card-block">
-                                            <p class="m-b-0">Publicaciones hechas <span class="f-right"></span></p>
-                                            <!-- <h6 class="m-b-20">Publicaciones</h6> -->
-                                            <h2 class="text-right"><i class="fa fa-newspaper-o f-left"></i><span><?php
-
-                                                                                                                    while ($publicaciones = mysqli_fetch_array($respubli)) {
-                                                                                                                        echo $publicaciones['total_publicaciones'];
-                                                                                                                    }
-
-
-                                                                                                                    ?></span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-xl-3">
-                                    <div class="card bg-c-green order-card">
-                                        <div class="card-block">
-                                            <p class="m-b-0">Documentos subidos<span class="f-right"></span></p>
-                                            <!-- <h6 class="m-b-20">Documentos</h6> -->
-                                            <h2 class="text-right"><i class="fa fa-file f-left"></i><span><?php
-
-                                                                                                            while ($documentos = mysqli_fetch_array($resdoc)) {
-                                                                                                                echo $documentos['total_documentos'];
-                                                                                                            }
-
-                                                                                                            ?></span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-xl-3">
-                                    <div class="card bg-c-yellow order-card">
-                                        <div class="card-block">
-                                            <p class="m-b-0">Integrantes del pleno CODEDUR<span class="f-right"></span></p>
-                                            <!-- <h6 class="m-b-20">Pleno</h6> -->
-                                            <h2 class="text-right"><i class="fa fa-user f-left"></i><span><?php
-
-                                                                                                            while ($pleno = mysqli_fetch_array($respleno)) {
-                                                                                                                echo $pleno['total_integrantes'];
-                                                                                                            }
-
-                                                                                                            ?></span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="col-md-6 col-xl-3">
                                     <div class="card bg-c-pink order-card">
                                         <div class="card-block">
-                                            <p class="m-b-0">Proyectos<span class="f-right"></span></p>
+                                            <p class="m-b-0">Rutas<span class="f-right"></span></p>
                                             <!-- <h6 class="m-b-20">Proyectos</h6>   -->
-                                            <h2 class="text-right"><i class="fa fa-building f-left"></i><span><?php
+                                            <h2 class="text-right"><i class="fa fa-bus f-left"></i><span><?php
 
                                                                                                                 while ($proyectos = mysqli_fetch_array($resproyecto)) {
                                                                                                                     echo $proyectos['total_proyectos'];
@@ -272,16 +210,16 @@ $respubli = mysqli_query($conn, $publicaciones);
                                 <div class="col-md-6 col-xl-3">
                                     <div class="card bg-c-blue order-card">
                                         <div class="card-block">
-                                            <p class="m-b-0">Usuarios con acceso a admin <span class="f-right"></span></p>
+                                            <p class="m-b-0">Usuarios<span class="f-right"></span></p>
                                             <!-- <h6 class="m-b-20">Publicaciones</h6> -->
-                                            <h2 class="text-right"><i class="fa fa-unlock-alt -o f-left"></i><span><?php 
-                                            
-                                            while ($users = mysqli_fetch_array($resusuaios)) {
-                                                echo $users['total_usuarios'];
-                                            }
+                                            <h2 class="text-right"><i class="fa fa-unlock-alt -o f-left"></i><span><?php
+
+                                                                                                                    while ($users = mysqli_fetch_array($resusuaios)) {
+                                                                                                                        echo $users['total_usuarios'];
+                                                                                                                    }
 
 
-                                            ?></span></h2>
+                                                                                                                    ?></span></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -300,12 +238,7 @@ $respubli = mysqli_query($conn, $publicaciones);
                     </div>
                 </div>
                 <!-- END MAIN -->
-                <div class="clearfix"></div>
-                <footer>
-                    <div class="container-fluid">
-                        <p class="copyright"><a href="https://www.themeineed.com" target="_blank">CODEDUR 2021-2023</a>. Todos los derechos reservados.</p>
-                    </div>
-                </footer>
+              
             </div>
             <!-- END WRAPPER -->
             <!-- Javascript -->
