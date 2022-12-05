@@ -89,48 +89,14 @@ if (isset($_SESSION['sesid'])) {
 
 require('./database.php');
 
-$documentos = ("SELECT COUNT(*) AS total_documentos FROM documentos");
+$rutas = ("SELECT COUNT(*) AS nom_ruta FROM rutas;");
 $usuarios = ("SELECT COUNT(*) AS total_usuarios FROM usuarios");
-$pleno = ("SELECT COUNT(*) AS total_integrantes FROM integrantes");
 $proyectos = ("SELECT COUNT(*) AS total_proyectos FROM proyectos");
-$publicaciones = ("SELECT COUNT(*) AS total_publicaciones FROM publicaciones");
 
 $resdoc = mysqli_query($conn, $documentos);
 $resusuaios = mysqli_query($conn, $usuarios);
-$respleno = mysqli_query($conn, $pleno);
 $resproyecto = mysqli_query($conn, $proyectos);
-$respubli = mysqli_query($conn, $publicaciones);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$resrutas = mysqli_query($conn, $rutas);
 
 ?>
 
@@ -166,7 +132,7 @@ $respubli = mysqli_query($conn, $publicaciones);
         <!-- END NAVBAR -->
         <!-- LEFT SIDEBAR -->
         <div id="sidebar-nav" class="sidebar">
-            <div class="sidebar-scroll" style="margin-top: 8%;">
+            <div class="sidebar-scroll" style="margin-top: 1%;">
                 <nav>
                     <ul class="nav">
                         <li><a href="#" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
@@ -198,8 +164,8 @@ $respubli = mysqli_query($conn, $publicaciones);
                                             <!-- <h6 class="m-b-20">Proyectos</h6>   -->
                                             <h2 class="text-right"><i class="fa fa-bus f-left"></i><span><?php
 
-                                                                                                                while ($proyectos = mysqli_fetch_array($resproyecto)) {
-                                                                                                                    echo $proyectos['total_proyectos'];
+                                                                                                                while ($rutas = mysqli_fetch_array($resrutas)) {
+                                                                                                                    echo $rutas['nom_ruta'];
                                                                                                                 }
 
                                                                                                                 ?></span></h2>
@@ -223,6 +189,7 @@ $respubli = mysqli_query($conn, $publicaciones);
                                         </div>
                                     </div>
                                 </div>
+                                
 
 
 

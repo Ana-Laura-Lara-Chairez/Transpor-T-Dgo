@@ -159,7 +159,7 @@
 
         <center>
 
-        <img src="assets/img/recorridos.jpeg" style="border-radius: 10px;" alt="">
+        <img src="assets/img/recorridos.jpeg" style="border-radius: 10px; width:90%;" alt="">
         </center>
     </div>
 
@@ -209,7 +209,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <form action='enviarcorreo.php' method='POST' id="contactForm" name="contactForm" class="contactFormu">
+                    <form action="enviarcorreo.php" method="POST" id="contactForm" name="contactForm" class="contactFormu">
                         <div class="row">
 
                             <div class="col-md-6">

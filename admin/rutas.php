@@ -7,7 +7,12 @@ if (isset($_SESSION['sesid'])) {
     echo '<script> window.location.href = "./index.php"; </script>"';
 }
 
+
+
+
+
 ?>
+
 
 
 
@@ -16,7 +21,7 @@ if (isset($_SESSION['sesid'])) {
 <html lang="en">
 
 <head>
-    <title>Administrar Usuarios</title>
+    <title>Administrar Rutas</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -99,53 +104,37 @@ if (isset($_SESSION['sesid'])) {
                         <div class="panel-body">
 
                             <div class="fluid-container justify-content-center mb-5">
-                                <form id="contact-form" name="contact-form" ole="form" enctype="multipart/form-data" method="POST">
+                                <form id="contact-form" name="contact-form" role="form" enctype="multipart/form-data" method="POST">
                                     <div class="controls">
+                                        
+                                        
                                         <div class="col-lg-6">
-                                            <div class="form-group"> <label for="nom_user">Nombre</label> <input id="nom_user" type="text" name="nom_user" class="form-control" placeholder="Nombre del usuario" required="required" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
+                                            <div class="form-group"> <label for="nom_user">Nombre de la ruta</label> <input id="nom_user" type="text" name="nom_user" class="form-control" placeholder="Nombre de la ruta" required="required" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
                                             </div>
                                         </div>
 
 
 
                                         <div class="col-lg-6">
-                                            <div class="form-group"> <label for="nick_user">Nickname (Opcional)</label>
-                                                <input id="nick_user" type="text" name="nick_user" class="form-control" placeholder="Nickname de usuario">
+                                            <div class="form-group"> <label for="dec_ruta">Descripcion ruta </label>
+                                                <input id="dec_ruta" type="text" name="dec_ruta" class="form-control" placeholder="Descripcion de la ruta">
                                             </div>
                                         </div>
 
 
 
-                                        <div class="col-lg-6">
-                                            <div class="form-group"> <label for="email_user">Email</label> <input id="email_user" type="email" name="email_user" class="form-control" placeholder="E-mail de usuario" required="required"> </div>
-                                        </div>
-
-
-
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group"> <label for="puesto_user">Puesto</label> <input id="puesto_user" type="text" name="puesto_user" class="form-control" placeholder="Puesto o area del usuario" required="required" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
-                                            </div>
-                                        </div>
+                                      
 
 
 
 
 
-                                        <div class="col-lg-6">
-                                            <div class="form-group"> <label for="password">Contraseña</label> <input id="password" type="password" name="password" class="form-control" placeholder="Contraeña" required="required"> </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group"> <label for="rep_password">Repetir
-                                                    Contraseña</label> <input id="rep_password" type="password" name="rep_password" class="form-control" placeholder="" required="required"> </div>
-
-                                            <a name="advertencia" id="advertencia" class="text-center text-alignment-center"></a>
-                                        </div>
+                                       
 
 
 
-                                        <div class="col-lg-12"> <button type="submit" class="btn btn-primary btn-send pt-2 btn-block " id="subir_user" name="subir_user" value="Registrar Usuario">Registrar Usuario</button>
+
+                                        <div class="col-lg-12"> <button type="submit" class="btn btn-primary btn-send pt-2 btn-block " id="subir_ruta" name="subir_ruta" value="Registrar una nueva ruta">Registrar Ruta</button>
                                         </div>
                                     </div>
                                 </form>
@@ -161,48 +150,59 @@ if (isset($_SESSION['sesid'])) {
 
                             <?php
                             require('./database.php');
-                            $datos_tabla = mysqli_query($conn, "SELECT * FROM usuarios");
+                            $query = mysqli_query($conn, "SELECT * FROM rutas");
+                            $row=mysqli_fetch_array($query);
 
 
-                            echo "<div style='overflow-x:auto'>";
-                            echo "<table  class='table'  id='d_datos'>
-                            <thead>
-                            <tr>
-                            <th scope='col'>Nombre</th>
-                            <th scope='col'>E-mail</th>
-
-                            <th scope='col'>Acciones</th>
-
-                            </tr>
-                            </thead>
-                            ";
-
-                            echo ' <tbody>';
-                            while ($row = mysqli_fetch_array($datos_tabla)) {
-                                echo '   <tr>';
-                                echo "  <th scope='row'>" . $row['nombre'] . "</th>";
-                                echo "    <td>" . $row['email'] . "</td>";
-
-                                echo  "<td> <a onclick='modificarUsuario(" . $row['id']  . ")'><img src='./assets/img/edit.png' width='35px'></a> <a onclick='borrarUsuario(" . $row['id']  . ")'><img src='./assets/img/delete.png' width='36px'></a></td>";
-
-                                echo "</tr>";
-                            }
-                            echo "</tbody>";
-                            echo "</table>";
-                            echo "</div>";
+                           
 
                             ?>
+                            <div class="col-md-12">
+                            <table class="table" >
+                                <thead class="table-success table-striped" >
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                       
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                        <?php
+                                            while($row=mysqli_fetch_array($query)){
+                                        ?>
+                                            <tr>
+                                                <th><?php  echo $row['nom_ruta']?></th>
+                                                <th><?php  echo $row['dec_ruta']?></th>
+                                               
+                                                <th><a href="actualizar.php?id=<?php echo $row['id_ruta'] ?>" class="btn btn-info">Editar</a></th>
+                                                <th><a href="delete.php?id=<?php echo $row['id_ruta'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                                            </tr>
+                                        <?php 
+                                            }
+                                        ?>
+                                </tbody>
+                            </table>
+                        </div>
+                            
+                            
+                            
+                            
 
                         </div>
-                             </div>
-            
-                </div>
+                            
+                
+                
+                
+               
 
                 <!-- END MAIN -->
                 <div class="clearfix"></div>
                 <footer>
                     <div class="container-fluid">
-                        <p class="copyright"><a href="https://www.themeineed.com" target="_blank">CODEDUR 2021-2023</a>. Todos los derechos reservados.</p>
+                        <p class="copyright"><a href="https://www.themeineed.com" target="_blank">Transpor-t 2021-2023</a>. Todos los derechos reservados.</p>
                     </div>
                 </footer>
             </div>
@@ -213,16 +213,14 @@ if (isset($_SESSION['sesid'])) {
 
 
 
-        if (isset($_POST['subir_user'])) {
+        if (isset($_POST['subir_ruta'])) {
 
 
             $nombre = $_POST['nom_user'];
-            $nick = $_POST['nick_user'];
-            $email = $_POST['email_user'];
-            $puesto = $_POST['puesto_user'];
-            $contra = $_POST['password'];
+            $descripcion = $_POST['dec_ruta'];
+           
 
-            $query = "SELECT * FROM usuarios where email = '$email'";
+            $query = "SELECT * FROM rutas where nom_ruta = 'nombre'";
             $result = mysqli_query($conn, $query);
 
             if ($result) {
@@ -235,17 +233,17 @@ if (isset($_SESSION['sesid'])) {
                 <script type='text/javascript'>
                 
                 Swal.fire(
-                    'Error al registrar usuario',
-                    'Ya existe un usuario registrado con ese email',
+                    'Error al registrar la ruta',
+                    'Ya existe una ruta registrada con ese nombre',
                     'warning'
                   )
                 </script>
+                
                 ";
                 } else {
 
                     $hash = ($contra);
-
-                    $consulta = "INSERT INTO usuarios (email,nombre,usuario,password,puesto) VALUES ('$email','$nombre','$nick','$hash','$puesto')";
+                    $consulta = "INSERT INTO rutas (id_ruta,nom_ruta,dec_ruta,fot_ruta) VALUES (NULL, '$nombre', '$descripcion', '')";
                     mysqli_query($conn, $consulta);
                     mysqli_free_result($result);
 
@@ -253,11 +251,16 @@ if (isset($_SESSION['sesid'])) {
             <script type='text/javascript'>
             
             Swal.fire(
-                'Usuario registrado',
-                'El usuario ha sido registrado correctamente',
+                'Ruta registrada',
+                'La ruta ha sido registrada correctamente',
                 'success'
               )
+               setInterval(codingCourse, 2000);
+                        function codingCourse() {
+                            window.location.assign('rutas.php')
+                          }
             </script>
+           
             ";
                 }
             }
@@ -270,18 +273,18 @@ if (isset($_SESSION['sesid'])) {
             function modificarUsuario(id) {
 
                 Swal.fire({
-                    title: 'Modificar Usuarios',
+                    title: 'Modificar ruta',
                     html: `
-            <input type="text" id="nombre" class="swal2-input" placeholder="Nombre del usuario">
-            <input type="text" id="usuario" class="swal2-input" placeholder="Nickname (Opcional)">
-            <input type="text" id="puesto" class="swal2-input" placeholder="Puesto del usuario">`,
+            <input type="text" id="nombre" class="swal2-input" placeholder="Nombre de la ruta">
+            
+            <input type="text" id="desc" class="swal2-input" placeholder="Descripcion de la ruta">`,
                     confirmButtonText: 'Modificar',
                     focusConfirm: false,
                     preConfirm: () => {
                         let usr_id = id;
                         let nombre = Swal.getPopup().querySelector('#nombre').value
-                        let usuario = Swal.getPopup().querySelector('#usuario').value
-                        let puesto = Swal.getPopup().querySelector('#puesto').value
+                       
+                        let descripcion = Swal.getPopup().querySelector('#desc').value
 
                         if (!nombre || !usuario || !puesto) {
                             Swal.showValidationMessage(`Porfavor, rellene todos los campos.`)
@@ -341,7 +344,7 @@ if (isset($_SESSION['sesid'])) {
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "./acciones/del_usr.php/?id=" + del_id,
+                            url: "./acciones/del_ruta.php/?id=" + del_id,
                             type: "POST",
                         });
 
