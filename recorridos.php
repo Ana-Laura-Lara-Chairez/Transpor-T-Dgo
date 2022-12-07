@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['sesid'])) {
+} else {
+    echo '"<script> window.location.href = "./admin/index.php"; </script>"';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

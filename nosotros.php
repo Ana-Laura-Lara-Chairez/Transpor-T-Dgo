@@ -53,8 +53,9 @@ require('./database.php');
                 <ul>
                     <li><a class="nav-link " href="index.php">Inicio</a></li>
                     <li><a class="nav-link " href="rutas.php">Rutas</a></li>
-                    <li><a class="nav-link " href="monedero.php">Monedero</a></li>
-                    <li><a class="nav-link " href="recorridos.php">Mis Recorridos</a></li>
+                    <li><a class="nav-link active" href="nosotros.php">Nosotros</a></li>
+                    <!-- <li><a class="nav-link " href="monedero.php">Monedero</a></li>
+                    <li><a class="nav-link " href="recorridos.php">Mis Recorridos</a></li> -->
                     <li><a class="nav-link " href="ayuda.php">Ayuda</a></li>
                     <li><a class="nav-link " href="admin/index.php">Iniciar Sesión</a></li>
                 </ul>

@@ -123,24 +123,12 @@ if (isset($_SESSION['sesid'])) {
 
 
 
-                                      
-
-
-
-
-
-                                       
-
-
-
-
-                                        <div class="col-lg-12"> <button type="submit" class="btn btn-primary btn-send pt-2 btn-block " id="subir_ruta" name="subir_ruta" value="Registrar una nueva ruta">Registrar Ruta</button>
+                            
+                                        <div class="col-lg-12"> <button type="submit" class="btn btn-primary btn-send pt-2 btn-block " id="subir_ruta" name="subir_ruta" value="Registrar una nueva ruta" style="margin-top: 20px;margin-bottom:25px; background-color:#004E8B;">Registrar Ruta</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-
-
 
 
                         </div>
@@ -158,7 +146,7 @@ if (isset($_SESSION['sesid'])) {
 
                             ?>
                             <div class="col-md-12">
-                            <table class="table" >
+                            <table class="table" id='d_datos' >
                                 <thead class="table-success table-striped" >
                                     <tr>
                                         <th>Nombre</th>
@@ -185,6 +173,12 @@ if (isset($_SESSION['sesid'])) {
                                         ?>
                                 </tbody>
                             </table>
+
+
+
+
+
+                            
                         </div>
                             
                             
@@ -200,6 +194,7 @@ if (isset($_SESSION['sesid'])) {
 
                 <!-- END MAIN -->
                 <div class="clearfix"></div>
+                
                 <footer>
                     <div class="container-fluid">
                         <p class="copyright"><a href="https://www.themeineed.com" target="_blank">Transpor-t 2021-2023</a>. Todos los derechos reservados.</p>

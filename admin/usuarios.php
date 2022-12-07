@@ -79,7 +79,7 @@ if (isset($_SESSION['sesid'])) {
                     <ul class="nav">
                     <li><a href="dashboard.php"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                         <li><a href="usuarios.php" class="active"><i class="lnr lnr-user"></i> <span>Usuarios</span></a></li>
-                        <li><a href="usuarios.php" class=""><i class="lnr lnr-bus"></i> <span>Rutas</span></a></li>
+                        <li><a href="rutas.php" class=""><i class="lnr lnr-bus"></i> <span>Rutas</span></a></li>
 
                     </ul>
                 </nav>
@@ -141,11 +141,8 @@ if (isset($_SESSION['sesid'])) {
                                                     Contraseña</label> <input id="rep_password" type="password" name="rep_password" class="form-control" placeholder="" required="required"> </div>
 
                                             <a name="advertencia" id="advertencia" class="text-center text-alignment-center"></a>
-                                        </div>
-
-
-
-                                        <div class="col-lg-12"> <button type="submit" class="btn btn-primary btn-send pt-2 btn-block " id="subir_user" name="subir_user" value="Registrar Usuario">Registrar Usuario</button>
+                                        </div>                    
+                                        <div class="col-lg-12"> <button type="submit" class="btn btn-primary btn-send pt-2 btn-block " id="subir_user" name="subir_user" value="Registrar Usuario" style="margin-top: 20px;margin-bottom:25px; background-color:#004E8B;">Registrar Usuario</button>
                                         </div>
                                     </div>
                                 </form>
@@ -161,42 +158,55 @@ if (isset($_SESSION['sesid'])) {
 
                             <?php
                             require('./database.php');
-                            $datos_tabla = mysqli_query($conn, "SELECT * FROM usuarios");
+                            $query = mysqli_query($conn, "SELECT * FROM usuarios");
+                            $row=mysqli_fetch_array($query);
 
 
-                            echo "<div style='overflow-x:auto'>";
-                            echo "<table  class='table'  id='d_datos'>
-                            <thead>
-                            <tr>
-                            <th scope='col'>Nombre</th>
-                            <th scope='col'>E-mail</th>
-
-                            <th scope='col'>Acciones</th>
-
-                            </tr>
-                            </thead>
-                            ";
-
-                            echo ' <tbody>';
-                            while ($row = mysqli_fetch_array($datos_tabla)) {
-                                echo '   <tr>';
-                                echo "  <th scope='row'>" . $row['nombre'] . "</th>";
-                                echo "    <td>" . $row['email'] . "</td>";
-
-                                echo  "<td> <a onclick='modificarUsuario(" . $row['id']  . ")'><img src='./assets/img/edit.png' width='35px'></a> <a onclick='borrarUsuario(" . $row['id']  . ")'><img src='./assets/img/delete.png' width='36px'></a></td>";
-
-                                echo "</tr>";
-                            }
-                            echo "</tbody>";
-                            echo "</table>";
-                            echo "</div>";
+                           
 
                             ?>
+                            <div class="col-md-12">
+                            <table class="table" id='d_datos' >
+                                <thead class="table-success table-striped" >
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>E-mail</th>
+                                       
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                        <?php
+                                            while($row=mysqli_fetch_array($query)){
+                                        ?>
+                                            <tr>
+                                                <th><?php  echo $row['nombre']?></th>
+                                                <th><?php  echo $row['email']?></th>
+                                               
+                                                <th><a href="actualizaruser.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Editar</a></th>
+                                                <th><a href="deleteuser.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                                            </tr>
+                                        <?php 
+                                            }
+                                        ?>
+                                </tbody>
+                            </table>
+
+
+
+
+
+                            
+                        </div>
+                            
+                            
+                            
+                            
 
                         </div>
-                             </div>
-            
-                </div>
+                            
 
                 <!-- END MAIN -->
                 <div class="clearfix"></div>

@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <link rel="manifest" href="./manifest.json">
+    <script>
+        if("serviceWorker" in navigator){
+            navigator.serviceWorker.register("sw.js");
+        }
+    </script>
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -127,26 +134,26 @@
             </div>
             <center>
 
-            <section class="portfolio-details">
-                <div class="col-lg-12">
-                    <div class="portfolio-details-slider swiper-container">
-                        <div class="swiper-wrapper align-items-center">
+                <section class="portfolio-details">
+                    <div class="col-lg-12">
+                        <div class="portfolio-details-slider swiper-container">
+                            <div class="swiper-wrapper align-items-center">
 
-                            <div class="swiper-slide">
-                                <img src="assets/img/rutas.jpeg" style="border-radius: 10px;" alt="">
-                            </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/img/rutas.jpeg" style="border-radius: 10px;" alt="">
+                                </div>
 
-                            <div class="swiper-slide">
-                                <img src="assets/img/rutas1.jpeg" style="border-radius: 10px;" alt="">
+                                <div class="swiper-slide">
+                                    <img src="assets/img/rutas1.jpeg" style="border-radius: 10px;" alt="">
+                                </div>
                             </div>
+                            <br>
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <br>
-                        <div class="swiper-pagination"></div>
-                    </div>
 
-                </div>
-            </section>
-        </center>
+                    </div>
+                </section>
+            </center>
         </div>
     </section>
     <!-- End About Section -->
@@ -159,7 +166,7 @@
 
         <center>
 
-        <img src="assets/img/recorridos.jpeg" style="border-radius: 10px; width:90%;" alt="">
+            <img src="assets/img/recorridos.jpeg" style="border-radius: 10px; width:90%;" alt="">
         </center>
     </div>
 

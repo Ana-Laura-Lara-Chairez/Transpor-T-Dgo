@@ -1,9 +1,9 @@
 <?php
 function conectar(){
     $host="localhost";
-    $user="u646610080_transport";
-    $pass="Transportate1";
-    $bd="u646610080_transport";
+    $user="root";
+    $pass="";
+    $bd="transpor-t";
     
      
 

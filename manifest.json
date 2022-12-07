@@ -1,0 +1,17 @@
+{
+    "name": "Transpor-T",
+    "short_name": "Transpor-T",
+    "theme_color": "#004E8B",
+    "background_color": "#004E8B",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "scope": "./",
+    "start_url": "./",
+    "icons": [
+        {
+            "src": "assets/img//favicon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
